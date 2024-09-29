@@ -1,33 +1,24 @@
-import { UserInfo } from "./Components/UserInfo";
+import UserDetail from "./Components/UserDetail";
 
 export default function App() {
+  const mock = [
+    {
+      id: 1,
+      username: "alice123",
+      email: "alice@example.com",
+    },
+    {
+      id: 2,
+      username: "bob456",
+      email: "bob@example.com",
+    },
+  ];
   return (
-    <div id="user-profile">
-      <h1>Root component</h1>
-      {/* Passing the value directly as a string */}
-      <UserInfo
-        usename="Alice"
-        name="Alice"
-        age={25}
-        favouriteFood={[
-          {
-            name: "Pizza",
-            taste: "savory",
-          },
-        ]}
-        isLoggedIn={true}
-      />
-      <UserInfo
-        favouriteFood={[
-          {
-            name: "Couscous",
-            taste: "spicy",
-          },
-        ]}
-        age={20}
-        name="Safwen"
-        isLoggedIn={false}
-      />
+    <div>
+      <h1>User List</h1>
+      {mock.map((user) => {
+        return <UserDetail key={user.id} user={user} />;
+      })}
     </div>
   );
 }
