@@ -4,15 +4,29 @@ export default function App() {
   return (
     <div id="user-profile">
       <h1>Root component</h1>
+      {/* Passing the value directly as a string */}
       <UserInfo
-        age={20}
-        isLoggedIn={false}
+        usename="Alice"
+        name="Alice"
+        age={25}
+        favouriteFood={[
+          {
+            name: "Pizza",
+            taste: "savory",
+          },
+        ]}
+        isLoggedIn={true}
+      />
+      <UserInfo
         favouriteFood={[
           {
             name: "Couscous",
-            taste: "spicy"
-          }
+            taste: "spicy",
+          },
         ]}
+        age={20}
+        name="Safwen"
+        isLoggedIn={false}
       />
     </div>
   );
