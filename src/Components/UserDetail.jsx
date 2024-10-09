@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function UserDetail({ user }) {
   return (
     <div key={user.id}>
@@ -7,3 +9,12 @@ export default function UserDetail({ user }) {
     </div>
   );
 }
+
+
+UserDetail.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    username: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }).isRequired,
+};
