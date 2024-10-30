@@ -1,6 +1,10 @@
+import LoginForm from "./Components/LoginForm";
 import UserDetail from "./Components/UserDetail";
 
 export default function App() {
+  window.addEventListener("resize", () => {
+    console.log(window.innerHeight, window.innerWidth);
+  });
   const mock = [
     {
       id: 1,
@@ -19,6 +23,7 @@ export default function App() {
       {mock.map((user) => {
         return <UserDetail key={user.id} prop={user} />;
       })}
+      <LoginForm />
     </div>
   );
 }
