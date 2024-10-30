@@ -4,8 +4,8 @@ export default function App() {
   const mock = [
     {
       id: 1,
-      username: "alice123",
-      email: "alice@example.com",
+      username: "saf123",
+      email: "safwen@example.com",
     },
     {
       id: 2,
@@ -17,7 +17,7 @@ export default function App() {
     <div>
       <h1>User List</h1>
       {mock.map((user) => {
-        return <UserDetail key={user.id} user={user} />;
+        return <UserDetail key={user.id} prop={user} />;
       })}
     </div>
   );

@@ -1,18 +1,18 @@
 import PropTypes from "prop-types";
 
-export default function UserDetail({ user }) {
+export default function UserDetail({ prop }) {
   return (
-    <div key={user.id}>
-      <p>ID: {user.id}</p>
-      <p>Username: {user.username}</p>
-      <p>Email: {user.email}</p>
+    <div key={prop.id}>
+      <p>ID: {prop.id}</p>
+      <p>Username: {prop.username}</p>
+      <p>Email: {prop.email}</p>
     </div>
   );
 }
 
 
 UserDetail.propTypes = {
-  user: PropTypes.shape({
+  prop: PropTypes.shape({
     id: PropTypes.number.isRequired,
     username: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
