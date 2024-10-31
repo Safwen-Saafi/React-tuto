@@ -1,5 +1,7 @@
 import LoginForm from "./Components/LoginForm";
+import { RegisterFormArray } from "./Components/RegisterFormArray";
 import UserDetail from "./Components/UserDetail";
+import Counter from "./Components/UseState";
 
 export default function App() {
   window.addEventListener("resize", () => {
@@ -24,6 +26,8 @@ export default function App() {
         return <UserDetail key={user.id} prop={user} />;
       })}
       <LoginForm />
+      <Counter />
+      <RegisterFormArray/>
     </div>
   );
 }
