@@ -10,7 +10,7 @@ export function RegisterForm() {
  return (
    <form>
      <div>
-       <label htmlFor="username">Username</label>
+       <label htmlFor="password">Password</label>
        <input id="username" value={password} onChange={(e) => setPassword(e.target.value)}/>
      </div>
      <div>
