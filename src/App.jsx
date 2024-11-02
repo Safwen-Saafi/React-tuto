@@ -1,46 +1,90 @@
 // import LoginForm from "./Components/LoginForm";
-import { RegisterFormArray } from "./Components/RegisterFormArray";
-import { ButtonUse } from "./Components/UseArrayButtonEdit";
-import UserDetail from "./Components/UserDetail";
+// import { RegisterFormArray } from "./Components/RegisterFormArray";
+// import { ButtonUse } from "./Components/UseArrayButtonEdit";
+// import UserDetail from "./Components/UserDetail";
 // import Counter from "./Components/UseState";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import PostBlog from "./Components/PostBlog";
 
 export default function App() {
   window.addEventListener("resize", () => {
     console.log(window.innerHeight, window.innerWidth);
   });
-  const [username, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [counter, setCounter] = useState(4);
+
+  // const [username, setUserName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [counter, setCounter] = useState(4);
+
   // Add clearForm function to reset fields
-  const clearForm = (e) => {
-    e.preventDefault(); // Prevent form submission
-    setUserName(""); // Reset username to empty
-    setEmail(""); // Reset email to empty
-  };
-  const [users, setUsers] = useState([
-    {
-      id: 1,
-      username: "saf123",
-      email: "safwen@example.com",
-    },
-    {
-      id: 2,
-      username: "bob456",
-      email: "bob@example.com",
-    },
-    {
-      id: 3,
-      username: "sawsan",
-      email: "sawsan@example.com",
-    },
-  ]);
+  // const clearForm = (e) => {
+  //   e.preventDefault(); // Prevent form submission
+  //   setUserName(""); // Reset username to empty
+  //   setEmail(""); // Reset email to empty
+  // };
+
+  // const [users, setUsers] = useState([
+  //   {
+  //     id: 1,
+  //     username: "saf123",
+  //     email: "safwen@example.com",
+  //   },
+  //   {
+  //     id: 2,
+  //     username: "bob456",
+  //     email: "bob@example.com",
+  //   },
+  //   {
+  //     id: 3,
+  //     username: "sawsan",
+  //     email: "sawsan@example.com",
+  //   },
+  // ]);
+
+  // useEffect(() => {
+  //   fetch("https://jsonplaceholder.typicode.com/users", { method: "GET" })
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       console.log(data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // });
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    async function fetchUsers() {
+      try {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/users",
+          { signal: controller.signal }
+        );
+        const json = await response.json();
+        console.log(json);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchUsers();
+    // Cleanup function
+    return () => {
+      controller.abort();
+    };
+  });
+
+  // So if you go to the network section, you'll notice how the first request is aborted because the component is unmounted, remeber
+  // that we are in strictMode so the re-rendering happens twice
+
   return (
     <div>
-      <h1>User List</h1>
+      {/* <h1>User List</h1>
       {users.map((user) => {
         return <UserDetail key={user.id} prop={user} />;
-      })};
+      })}
+      ;
       <RegisterFormArray />
       <form
         onSubmit={(e) => {
@@ -75,7 +119,8 @@ export default function App() {
       </form>
       {users.map((user) => {
         return <ButtonUse key={user.id} user={user} setUsers={setUsers} />;
-      })}
+      })} */}
+      <PostBlog/>
     </div>
   );
 }
