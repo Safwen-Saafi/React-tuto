@@ -5,6 +5,7 @@
 // import Counter from "./Components/UseState";
 import { useEffect, useState } from "react";
 import PostBlog from "./Components/PostBlog";
+import { useDocumentClick } from "./Utils/Hooks/useDocumentClick";
 
 export default function App() {
   window.addEventListener("resize", () => {
@@ -74,7 +75,7 @@ export default function App() {
       controller.abort();
     };
   });
-
+  useDocumentClick();
   // So if you go to the network section, you'll notice how the first request is aborted because the component is unmounted, remeber
   // that we are in strictMode so the re-rendering happens twice
 
