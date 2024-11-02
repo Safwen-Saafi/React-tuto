@@ -10,7 +10,10 @@ export function RegisterFormArray() {
     !formFields.username || !formFields.password || !formFields.displayName;
   console.log(formFields);
   return (
-    <form>
+    <form
+    //  onSubmit={(e) => {
+    //   e.preventDefault();}}
+    >
       <div>
         <label htmlFor="password">Password</label>
         <input

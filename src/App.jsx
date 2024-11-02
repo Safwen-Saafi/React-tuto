@@ -1,8 +1,8 @@
-import LoginForm from "./Components/LoginForm";
+// import LoginForm from "./Components/LoginForm";
 import { RegisterFormArray } from "./Components/RegisterFormArray";
 import { ButtonUse } from "./Components/UseArrayButtonEdit";
 import UserDetail from "./Components/UserDetail";
-import Counter from "./Components/UseState";
+// import Counter from "./Components/UseState";
 import { useState } from "react";
 
 export default function App() {
@@ -40,9 +40,7 @@ export default function App() {
       <h1>User List</h1>
       {users.map((user) => {
         return <UserDetail key={user.id} prop={user} />;
-      })}
-      <LoginForm />
-      <Counter />
+      })};
       <RegisterFormArray />
       <form
         onSubmit={(e) => {
