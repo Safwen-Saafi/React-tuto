@@ -3,6 +3,7 @@ import { useDocumentClick } from "./Utils/Hooks/useDocumentClick";
 import { UserContext } from "./Context/UserContext";
 import { PostContainer } from "./Components/Context API/PostContainer";
 import FetchUser from "./Components/Fetch API/FetchUser";
+import { Link, Outlet } from "react-router-dom";
 
 export default function App() {
  
@@ -20,11 +21,18 @@ export default function App() {
 
   return (
     <div>
+      <nav>
+      <ul>
+        <li><Link to="/form">Users</Link></li>
+      </ul>
+      </nav>
+
       <UserContext.Provider value={{ ...userdata, setUserData }}>
         <PostContainer />
         {/* Any Component inside this or its children are part of the user context, any data inside the usercontext will be accessible through all of the children*/}
       </UserContext.Provider>
       <FetchUser/>
+      <Outlet />
     </div>
   );
 }

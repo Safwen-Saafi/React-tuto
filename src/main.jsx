@@ -1,15 +1,27 @@
-// Import StrictMode - a development tool to highlight potential problems
-import { StrictMode } from 'react'
+// Import necessary dependencies
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import App from './App.jsx';
+import { LoginForm } from '../src/Components/Conditional Rendering/LoginForm.jsx';
 
-// Import createRoot - the new API for rendering React apps (introduced in React 18)
-import { createRoot } from 'react-dom/client'
+// Create router configuration
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+      path: "/form",
+      element: <LoginForm />,
+      }
+    ]
+  },
+]);
 
-// Import your main App component
-import App from './App.jsx'
-
-// The actual rendering process:
+// The actual rendering process with routing:
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>,
-)
+);
