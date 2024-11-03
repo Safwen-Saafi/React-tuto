@@ -11,14 +11,17 @@ export function RegisterFormArray() {
   console.log(formFields);
   return (
     <form
-    //  onSubmit={(e) => {
-    //   e.preventDefault();}}
+     onSubmit={(e) => {
+      e.preventDefault();}}
     >
       <div>
         <label htmlFor="password">Password</label>
         <input
           id="pass"
           value={formFields.password}
+          // We're gonna spread the JS Object
+          // currentvalue represents the current state of formFields
+          // Keep in mind that setFormFields works on the whole JS object and not the specific field
           onChange={(e) =>
             setFormFields((currentvalue) => ({
               ...currentvalue,

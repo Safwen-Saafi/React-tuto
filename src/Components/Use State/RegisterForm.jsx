@@ -11,11 +11,11 @@ export function RegisterForm() {
    <form>
      <div>
        <label htmlFor="password">Password</label>
-       <input id="username" value={password} onChange={(e) => setPassword(e.target.value)}/>
+       <input id="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
      </div>
      <div>
        <label htmlFor="username">UserName</label>
-       <input id="password" value={username} onChange={(e) => setUsername(e.target.value)}/>
+       <input id="username" value={username} onChange={(e) => setUsername(e.target.value)}/>
      </div>
      <div>
        <label htmlFor="displayName">Display Name</label>

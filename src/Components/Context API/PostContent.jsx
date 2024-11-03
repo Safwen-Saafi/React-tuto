@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { UserContext } from "../Context/UserContext";
+import { UserContext } from "../../Context/UserContext";
 
 export default function PostContent () {
   const userContextData = useContext(UserContext); 
@@ -15,7 +15,7 @@ export default function PostContent () {
         ...currentState,
         email: 'safwenmagnifico@mammmamia.it'
       }))}
-    }>Click me</button>    
+    }>Click me to change mail</button>    
     </div> 
   )
 } 
