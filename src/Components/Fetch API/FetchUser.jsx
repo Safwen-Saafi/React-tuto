@@ -6,7 +6,7 @@ export default function FetchUser() {
   const { userData, loading, error } = useFetchUser(userId);
 
   const handleNextUser = () => {
-    setUserId(prev => prev < 10 ? prev + 1 : 1);
+    setUserId(prev => prev <= 10 ? prev + 1 : 1);
   };
 
   if (loading) {
@@ -36,8 +36,6 @@ export default function FetchUser() {
     </div>
   );
 }
-
-
 
 // The number 2 means:
 

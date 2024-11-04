@@ -1,0 +1,593 @@
+1)PROPS:
+
+A prop (short for "property") in React is a way to pass data from a parent component to a child component. Read-only
+
+
+Let’s create two components: App and Greeting. The App component will pass a name prop to the Greeting component.
+
+
+Always look at the father first
+
+-----------------------------
+
+function Greeting({ name }) {
+  return <h1>Hello, {name}!</h1>;
+}
+
+export default Greeting;
+
+
+------------------------------
+
+
+import Greeting from './Greeting';
+
+function App() {
+  return (
+    <div>
+      <Greeting name="Alice" />
+    </div>
+  );
+}
+
+export default App;
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+2)FRAGMENTS:
+
+Fragments are helpful when you want to return multiple elements from a component without wrapping them in an unnecessary <div> or other container element, which can clutter the DOM and make styling harder.
+
+
+function Example() {
+  return (
+    <>
+      <h1>Hello</h1>
+      <p>This is an example of a React Fragment.</p>
+    </>
+  );
+}
+
+export default Example;
+
+
+------------------------------------------------------------------------------------------------------------------------
+ 	
+
+3)RENDERING LIST:
+
+In React, rendering a list involves using JavaScript’s .map() function to iterate over an array of data and return a component for each item in the array.
+
+
+
+function ListItem({ item }) {
+  return (
+    <li>
+      {item.name} - Age: {item.age}
+    </li>
+  );
+}
+
+export default ListItem;
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+import ListItem from './ListItem';
+
+function List() {
+  const people = [
+    { id: 1, name: "Alice", age: 25 },
+    { id: 2, name: "Bob", age: 30 },
+    { id: 3, name: "Charlie", age: 35 },
+  ];
+
+  return (
+    <ul>
+      {people.map((person) => (
+        <ListItem key={person.id} item={person} />
+      ))}
+    </ul>
+  );
+}
+
+export default List;
+
+------------------------------------------------------------------------------------------------------------------------
+
+4) CONDITIONAL RENDERING:
+
+Conditional rendering in React allows you to render different components or elements based on a specific condition.
+
+
+1. Using if Statements
+
+function Greeting({ isLoggedIn }) {
+  if (isLoggedIn) {
+    return <h1>Welcome back!</h1>;
+  }
+  return <h1>Please sign in.</h1>;
+}
+
+export default Greeting;
+
+
+
+
+2. Using Ternary Operators
+
+function Greeting({ isLoggedIn }) {
+  return (
+    <h1>
+      {isLoggedIn ? 'Welcome back!' : 'Please sign in.'}
+    </h1>
+  );
+}
+
+export default Greeting;
+
+
+
+
+3. Using && (Logical AND Operator)
+
+function Notification({ hasNotifications }) {
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      {hasNotifications && <p>You have new notifications!</p>}
+    </div>
+  );
+}
+
+export default Notification;
+
+
+
+4. Using switch Statements
+
+function StatusMessage({ status }) {
+  switch (status) {
+    case 'loading':
+      return <p>Loading...</p>;
+    case 'success':
+      return <p>Data loaded successfully!</p>;
+    case 'error':
+      return <p>Error loading data.</p>;
+    default:
+      return <p>Unknown status.</p>;
+  }
+}
+
+export default StatusMessage;
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+5) EVENT HANDLING
+
+Event handling in React allows you to respond to user interactions (like clicks, keyboard input, form submissions, etc.) 
+by executing specific functions.
+
+  <input id="username" value={password} onChange={(e) => setPassword(e.target.value)}/>
+
+The e in onChange={(e) => setPassword(e.target.value)} is the Event object - it's a JavaScript object that contains information
+about the event that just occurred. 
+
+
+// e (or event) contains info about what happened
+onChange={(e) => {
+    console.log(e.target);        // The DOM element (<input>)
+    console.log(e.target.value);  // The current input value
+    console.log(e.type);          // "change"
+}}
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+6) USE STATE:
+
+State in React is a way to create and manage dynamic data within a component. It allows components to create and manage their
+own data that can change over time, triggering re-renders when the data updates.
+
+function Counter() {
+  // Declare a state variable 'count' with initial value of 0
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+7) USE EFFECT:
+
+useEffect is a hook in React that lets you perform side effects in your components. 
+Common use cases include:
+	Fetching data
+	Subscribing to services
+	Manually changing the DOM
+	Setting up event listeners
+
+
+
+
+import { useEffect, useState } from 'react';
+
+function ExampleComponent() {
+  const [data, setData] = useState(null);
+
+  // Runs after every render
+  useEffect(() => {
+    console.log('Effect ran');
+  });
+
+  // Runs only on mount (empty dependency array)
+  useEffect(() => {
+    console.log('Component mounted');
+  }, []);
+
+  // Runs when count changes
+  useEffect(() => {
+    console.log('Data changed');
+  }, [data]);
+
+  return <div>Example</div>;
+}
+
+
+
+
+Some key points about useEffect:
+
+Dependencies: The second argument (dependency array) controls when the effect runs:
+
+No array: Effect runs after every render
+Empty array []: Effect runs only once on mount
+Array with values [value1, value2]: Effect runs when these values change
+
+
+Cleanup: Return a function to clean up effects
+Think of AbortController like this:
+
+It's like having a TV remote's cancel button
+When you change channels (unmount component)
+It stops the current channel from loading (cancels fetch)
+So you don't see flashes of the old channel (stale data)
+
+This is particularly important for:
+
+Fast navigation between pages
+Search interfaces with quick typing
+Any UI where new data requests might override old ones
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+Rendering is:
+
+
+The process of React calculating what should be displayed
+Converting the component's JSX into a virtual DOM representation
+Can happen multiple times during a component's lifecycle
+Doesn't necessarily mean changes to the actual DOM
+
+
+Mounting is:
+
+
+The initial process of inserting a component into the DOM for the first time
+Happens only once in a component's lifecycle
+Includes the first render plus actually adding the elements to the browser's DOM
+Triggers the componentDidMount lifecycle method (in class components) or useEffect with empty dependencies (in hooks)
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+JSX is simply a syntax extension for JavaScript that lets you write HTML-like code inside your JavaScript.
+Behind the scenes, JSX gets converted to regular JavaScript. 
+You can embed any JavaScript expression inside JSX using curly braces {}
+Since JSX is closer to JavaScript than HTML, it uses camelCase properties like className instead of class
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+DOM and VIRTUAL DOM:
+
+
+1) DOM
+First of all, DOM ( Document Object Model )
+Think of it as a tree-like representation of your webpage in the browser's memory
+Manipulating the real DOM directly is "expensive"
+
+2) Vitrual DOM:
+It's a lightweight copy of the real DOM that exists in memory
+Like a "blueprint" or "draft" of changes before they're applied
+React uses it to minimize actual DOM updates
+
+
+
+Think of it like a manuscript:
+
+The real DOM is like the published book
+The Virtual DOM is like your draft document
+Instead of reprinting the whole book for a typo
+You identify what changed and only fix those pages
+
+
+
+A simple example of the process of updating the DOM:
+
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+    </div>
+  );
+}
+
+// When button is clicked:
+// 1. State updates (count increases)
+// 2. React creates new Virtual DOM with new count
+// 3. Compares: Only the text content changed
+// 4. Only updates that specific text in real DOM
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+Vite is a build tool that helps you create and develop React applications faster. 
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+JS Object vs JSON
+
+JS Object:    const formFields = { name: "John", age: 30 };
+JSON:    '{"name": "John", "age": 30}'
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+Parsing refers to the process of analyzing a string of data and converting it into a more structured and usable format, 
+such as an object or data structure in programming.
+In JavaScript, if you have data in a string format (e.g., JSON), you need to parse it to convert it into a JavaScript 
+object that you can interact with.
+
+
+const jsonString = '{"name": "Alice", "age": 25}'; // JSON string
+
+// Parsing the JSON string to a JavaScript object
+const parsedObject = JSON.parse(jsonString);
+
+console.log(parsedObject.name); // Output: Alice
+console.log(parsedObject.age);  // Output: 25
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+The opposite of parsing is stringifying, where you convert an object or data structure back into a string. In JavaScript, 
+this is done using JSON.stringify():
+
+const obj = { name: "Alice", age: 25 };
+
+// Stringifying the JavaScript object to a JSON string
+const jsonString = JSON.stringify(obj);
+
+console.log(jsonString); // Output: '{"name":"Alice","age":25}'
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+
+8) CONTEXT API:
+
+helps solve prop drilling and manages global state. 
+Props are like passing messages through people in a line.
+Context is like broadcasting over a speaker - anyone who needs to hear can listen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
