@@ -1,0 +1,20 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`UserDetail > should render user details 1`] = `
+<div>
+  <div>
+    <p>
+      ID: 
+      1
+    </p>
+    <p>
+      Username: 
+      testuser
+    </p>
+    <p>
+      Email: 
+      test@example.com
+    </p>
+  </div>
+</div>
+`;
