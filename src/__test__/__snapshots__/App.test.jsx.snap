@@ -1,0 +1,225 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Should render Users > should make a snapshot of the component 1`] = `
+<div>
+  <div>
+    <div
+      style="border: 1px solid #ddd; margin: 10px; padding: 10px; border-radius: 5px;"
+    >
+      <div>
+        <button>
+          Edit
+        </button>
+        <button>
+          Delete
+        </button>
+      </div>
+      <div>
+        <b>
+          ID: 
+        </b>
+        <span>
+          1
+        </span>
+        <br />
+        <b>
+          Username: 
+        </b>
+        <span>
+          saf123
+        </span>
+        <br />
+        <b>
+          Email: 
+        </b>
+        <span>
+          safwen@example.com
+        </span>
+        <br />
+      </div>
+    </div>
+    <div
+      style="border: 1px solid #ddd; margin: 10px; padding: 10px; border-radius: 5px;"
+    >
+      <div>
+        <button>
+          Edit
+        </button>
+        <button>
+          Delete
+        </button>
+      </div>
+      <div>
+        <b>
+          ID: 
+        </b>
+        <span>
+          2
+        </span>
+        <br />
+        <b>
+          Username: 
+        </b>
+        <span>
+          bob456
+        </span>
+        <br />
+        <b>
+          Email: 
+        </b>
+        <span>
+          bob@example.com
+        </span>
+        <br />
+      </div>
+    </div>
+    <div
+      style="border: 1px solid #ddd; margin: 10px; padding: 10px; border-radius: 5px;"
+    >
+      <div>
+        <button>
+          Edit
+        </button>
+        <button>
+          Delete
+        </button>
+      </div>
+      <div>
+        <b>
+          ID: 
+        </b>
+        <span>
+          3
+        </span>
+        <br />
+        <b>
+          Username: 
+        </b>
+        <span>
+          sawsan
+        </span>
+        <br />
+        <b>
+          Email: 
+        </b>
+        <span>
+          sawsan@example.com
+        </span>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Should render Users > should render users in order 1`] = `
+<div>
+  <div>
+    <div
+      style="border: 1px solid #ddd; margin: 10px; padding: 10px; border-radius: 5px;"
+    >
+      <div>
+        <button>
+          Edit
+        </button>
+        <button>
+          Delete
+        </button>
+      </div>
+      <div>
+        <b>
+          ID: 
+        </b>
+        <span>
+          1
+        </span>
+        <br />
+        <b>
+          Username: 
+        </b>
+        <span>
+          saf123
+        </span>
+        <br />
+        <b>
+          Email: 
+        </b>
+        <span>
+          safwen@example.com
+        </span>
+        <br />
+      </div>
+    </div>
+    <div
+      style="border: 1px solid #ddd; margin: 10px; padding: 10px; border-radius: 5px;"
+    >
+      <div>
+        <button>
+          Edit
+        </button>
+        <button>
+          Delete
+        </button>
+      </div>
+      <div>
+        <b>
+          ID: 
+        </b>
+        <span>
+          2
+        </span>
+        <br />
+        <b>
+          Username: 
+        </b>
+        <span>
+          bob456
+        </span>
+        <br />
+        <b>
+          Email: 
+        </b>
+        <span>
+          bob@example.com
+        </span>
+        <br />
+      </div>
+    </div>
+    <div
+      style="border: 1px solid #ddd; margin: 10px; padding: 10px; border-radius: 5px;"
+    >
+      <div>
+        <button>
+          Edit
+        </button>
+        <button>
+          Delete
+        </button>
+      </div>
+      <div>
+        <b>
+          ID: 
+        </b>
+        <span>
+          3
+        </span>
+        <br />
+        <b>
+          Username: 
+        </b>
+        <span>
+          sawsan
+        </span>
+        <br />
+        <b>
+          Email: 
+        </b>
+        <span>
+          sawsan@example.com
+        </span>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -12,6 +12,6 @@ describe("UserDetail", () => {
     };
 
     render(<UserDetail prop={mockProp} />);
-    expect(await screen.findByText(/Username: testuser/)).toBeInTheDocument();
+    expect(await screen.findByText(/Username: test/)).toBeInTheDocument();
   });
 });

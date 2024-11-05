@@ -51,6 +51,7 @@ export function ButtonClaude({ user }) {
         <b>Username: </b>
         {isEditing ? (
           <input 
+            aria-label="username"
             name="username"
             id="username"
             value={userData.username} 
@@ -65,6 +66,7 @@ export function ButtonClaude({ user }) {
         <b>Email: </b>
         {isEditing ? (
           <input 
+            aria-label="email"
             name="email"
             id="email"
             value={userData.email} 
